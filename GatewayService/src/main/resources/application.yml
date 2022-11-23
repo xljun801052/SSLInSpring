@@ -1,0 +1,22 @@
+server:
+  port: 8888
+spring:
+  cloud:
+    gateway:
+      httpclient:
+        ssl:
+          use-insecure-trust-manager: true
+#          use-insecure-trust-manager: false
+      routes:
+        - id: insecure-service-without-certificate
+          uri: https://localhost:9998 # imitate the secure site but without certificate!!!
+          predicates:
+            - Path=/insecure/**
+        - id: secure-service-with-certificate
+          uri: https://localhost:9999
+          predicates:
+            - Path=/secure/**
+        - id: client-service
+          uri: http://localhost:9997
+          predicates:
+            - Path=/client/**

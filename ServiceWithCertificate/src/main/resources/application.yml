@@ -1,0 +1,6 @@
+server:
+  port: 9999
+  ssl:
+    key-store-type: jks
+    key-store: classpath:xlys_self_signed.jks
+    key-store-password: 123456

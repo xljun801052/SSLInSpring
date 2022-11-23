@@ -1,0 +1,6 @@
+server:
+  port: 9997
+feign:
+  httpclient:
+    enabled: true
+    disableSslValidation: true
